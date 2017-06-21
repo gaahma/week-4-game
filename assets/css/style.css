@@ -1,0 +1,39 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url("../images/xwing.jpg");
+	font-family: Orbitron, sans-serif;
+
+}
+
+.character-image {
+	padding: 0% 5%;
+}
+
+.character-card {
+	background-color: #fff;
+	width: 15%;
+	margin: 0% 0.25%;
+	float: left;
+}
+
+.select-character {
+	border: solid 5px grey;
+}
+.player-character {
+	border: solid 5px green;
+
+}
+
+.enemy-character {
+	border: solid 5px black;
+	background-color: red;
+
+}
+
+#player {
+
+}
+
