@@ -23,6 +23,8 @@ var game = {
 		} else {
 			defender.die();
 		}
+
+
 	}
 }
 
@@ -52,10 +54,33 @@ function character(name1, name2, HP, attackPower, counterAttackPower, imgSrc){
 			$("#defender").empty();
 			defender = undefined;
 		}
-	}
-	character.card = characterCard(character);
-	character.makeIDs();
-	return character;
+
+		makeCard: function(character){
+			var characterCard = $("<div>");
+			var characterName = $("<div>");
+			var characterImage = $("<img>");
+			var characterHP = $("<div>");
+			// name and hp html
+			characterName.html(character.name);
+			characterHP.html(character.hp);
+			//classes and attributes
+			characterCard.addClass("character-card select-character");
+			characterName.addClass("text-center");
+			characterImage.addClass("img-responsive character-image");
+			characterHP.addClass("text-center");
+
+			characterCard.attr("name", character.name);
+			characterImage.attr({src: character.img, alt: character.name});
+			characterHP.attr("id", character.lastName + "HP");
+			//append to the "card"
+			characterCard.append(characterName, characterImage, characterHP);
+
+			return characterCard;
+		}
+	}			
+		character.card = characterCard(character);
+		character.makeIDs();
+		return character;
 }
 
 function characterCard(character){
@@ -67,19 +92,16 @@ function characterCard(character){
 	characterName.html(character.name);
 	characterHP.html(character.hp);
 	//classes and attributes
-	characterHP.attr("id", character.lastName + "HP");
 	characterCard.addClass("character-card select-character");
-	characterCard.attr("name", character.name);
 	characterName.addClass("text-center");
 	characterImage.addClass("img-responsive character-image");
 	characterHP.addClass("text-center");
-	//characterHP.attr("id", );
-	characterImage.attr("src", character.img);
-	characterImage.attr("alt", character.name);
+
+	characterCard.attr("name", character.name);
+	characterImage.attr({src: character.img, alt: character.name});
+	characterHP.attr("id", character.lastName + "HP");
 	//append to the "card"
-	characterCard.append(characterName);
-	characterCard.append(characterImage);
-	characterCard.append(characterHP);
+	characterCard.append(characterName, characterImage, characterHP);
 
 	return characterCard;
 }
@@ -124,8 +146,6 @@ $(document).ready(function(){
 			return;
 		game.attack();
 	});
-
-
 });
 
 

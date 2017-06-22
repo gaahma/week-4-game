@@ -3,7 +3,7 @@
 }
 
 body {
-	background-image: url("../images/xwing.jpg");
+	background-image: url("../images/walker.jpg");
 	font-family: Orbitron, sans-serif;
 
 }
@@ -14,23 +14,29 @@ body {
 
 .character-card {
 	background-color: #fff;
-	width: 15%;
+	width: 20%;
 	margin: 0% 0.25%;
 	float: left;
 }
 
 .select-character {
-	border: solid 5px grey;
+	border: solid 5px blue;
 }
 .player-character {
 	border: solid 5px green;
+
 
 }
 
 .enemy-character {
 	border: solid 5px black;
 	background-color: red;
+}
 
+.defender {
+	background-color: #000;
+	color: #fff;
+	border: solid 5px red;
 }
 
 #player {
