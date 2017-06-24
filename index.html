@@ -12,18 +12,23 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 text-center"><h3>Star Wars Game</h3></div>
-			<div class="col-xs-12" id="selection"></div>
-			<div class="col-xs-12"><h5>Your character</h5></div>
-			<div class="col-xs-12" id="player"></div>
-			<div class="col-xs-12"><h5>Enemies to attack</h5></div>
-			<div class="col-xs-12" id="enemies"></div>
-			<div class="col-xs-12"><h5>Fight section</h5></div>
-			<div class="col-xs-12"><button id="attack">Attack</button></div>
-			<div class="col-xs-12"><h5>Defender</h5></div>
-			<div class="col-xs-12" id="defender"></div>
-			<div class="col-xs-12" id="attackLog"></div>
-			<div class="col-xs-12" id="endGame"></div>
+			<div class="col-xs-4 text-center">
+				<h5>Your character</h5>
+				<div id="player"></div>
+				<h5>Defender</h5>
+				<div id="defender"></div>
+			</div>
+			<div class="col-xs-4 text-center">
+				<h3>Star Wars Game</h3>
+				<button class="btn btn-default" id="attack">Attack</button>
+				<div id="attackLog">Select your character</div>
+				<div id="endGame"></div>
+				
+			</div>
+			<div class="col-xs-4 text-center">
+				<h5>Enemies to attack</h5>
+				<div id="enemies"></div>
+			</div>
 		</div>
 	</div>
 </body>

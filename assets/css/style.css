@@ -14,9 +14,9 @@ body {
 
 .character-card {
 	background-color: #fff;
-	width: 20%;
-	margin: 0% 0.25%;
-	float: left;
+	width: 100%;
+	/*margin: 0.5% 15%;*/
+	
 }
 
 .select-character {
@@ -39,7 +39,11 @@ body {
 	border: solid 5px red;
 }
 
-#player {
+#attackLog {
+	margin-top: 10%;
+}
 
+#attack {
+	padding: 2.5%;
 }
 

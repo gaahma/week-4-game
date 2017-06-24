@@ -5,10 +5,10 @@ var game = {
 	init: function(){				 	//name, hp, attack, counterAttack, image
 		this.characterList.push(game.character("Luke", "Skywalker", 150, 8, 15,  "assets/images/skywalker.jpg"));
 		this.characterList.push(game.character("Obiwan", "Kenobi", 120, 12, 20, "assets/images/kenobi.jpg"));
-		this.characterList.push(game.character("Darth", "Vader", 180, 10, 30, "assets/images/vader.jpg"));
+		this.characterList.push(game.character("Darth", "Vader", 180, 3, 30, "assets/images/vader.jpg"));
 		this.characterList.push(game.character("Kylo", "Ren", 100, 20, 10, "assets/images/ren.jpg"));
 		for (var i = 0; i < game.characterList.length; i++){
-			$("#selection").append(game.characterList[i].card);
+			$("#player").append(game.characterList[i].card);
 		}
 	},
 
@@ -24,28 +24,28 @@ var game = {
 			game.attackLog(attack, counterAttack);
 
 		} else {
-			game.defender.die();
 			if (game.characterList.length === 0){
-				game.gameOver();
+				game.gameOver("win");
+			} 
+			else {
+				game.defender.die();
 			}
 		} 
 		if(game.player.hp <= 0){
-			$("#attackLog").html("You lost");
-			game.gameOver();
+			game.gameOver("lose");
 		}
 	},
 
 	attackLog: function(attack, counter){
-		console.log("reached");
 		$("#attackLog").html("<p>You attacked " + game.defender.name + " for " 
 			+ attack + " damage" + "<br>" + game.defender.name
 			+ " attacked you back for " + counter + " damage.</p>");
 	},
 
-	gameOver: function(){
-		console.log("reached game over");
+	gameOver: function(winLoss){
 		$("#attack").off("click");
-		$("#endGame").html("<button id='reset'>Play again</button>");
+		$("#attackLog").html("You " + winLoss + "!");
+		$("#endGame").html("<button class='btn btn-default' id='reset'>Play again</button>");
 	},
 
 	character: function(name1, name2, HP, attackPower, counterAttackPower, imgSrc){
@@ -57,7 +57,7 @@ var game = {
 			counterAttack: counterAttackPower,
 			baseAttack: attackPower,
 			img: imgSrc,
-			card: undefined,
+			card: undefined,		//these 3 items get defined at the end of the funciton
 			characterID: undefined,
 			hpID: undefined,
 
@@ -72,7 +72,8 @@ var game = {
 
 			die: function(){
 				$("#defender").empty();
-				$("#attackLog").html("You defeated " + game.defender.name);
+				$("#attackLog").html("You defeated " + game.defender.name + 
+									 "<br>Select another opponent");
 				game.defender = undefined;
 			},
 
@@ -98,7 +99,7 @@ var game = {
 
 				return characterCard;
 			}
-		}			
+		}	//end of var character declaration		
 			character.card = character.makeCard(character);
 			character.makeIDs();
 			return character;		
@@ -124,6 +125,7 @@ $(document).ready(function(){
 		game.characterList.splice(index, 1);
 		$("#player").append($(".player-character"));
 		$("#enemies").append($(".enemy-character"));
+		$("#attackLog").html("Select your opponent");
 		$(".character-card").off("click");
 	});
 
@@ -141,7 +143,7 @@ $(document).ready(function(){
 			}		
 		}
 		game.defender.card.addClass("defender");
-		$("#attackLog").empty();
+		$("#attackLog").html("Fight!!!");
 	});
 
 	$("#attack").on("click", function(){
@@ -151,7 +153,6 @@ $(document).ready(function(){
 	});
 
 	$(document).on("click", "#reset", function(){
-		console.log("reached refresh");
 		window.location.reload();
 	});
 });
