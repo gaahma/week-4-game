@@ -5,7 +5,6 @@
 body {
 	background-image: url("../images/walker.jpg");
 	font-family: Orbitron, sans-serif;
-
 }
 
 .character-image {
@@ -14,9 +13,7 @@ body {
 
 .character-card {
 	background-color: #fff;
-	width: 100%;
-	/*margin: 0.5% 15%;*/
-	
+	width: 100%;	
 }
 
 .select-character {
@@ -24,8 +21,6 @@ body {
 }
 .player-character {
 	border: solid 5px green;
-
-
 }
 
 .enemy-character {
@@ -34,8 +29,8 @@ body {
 }
 
 .defender {
-	background-color: #000;
-	color: #fff;
+	background-color: black;
+	color: white;
 	border: solid 5px red;
 }
 
@@ -45,5 +40,7 @@ body {
 
 #attack {
 	padding: 2.5%;
+	width: 50%;
+	margin-top: 10%;
 }
 
